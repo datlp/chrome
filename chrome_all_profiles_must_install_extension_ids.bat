@@ -1,4 +1,5 @@
 @echo off
+chcp 65001>nul
 setlocal EnableDelayedExpansion
 
 echo ========================================================================
@@ -13,9 +14,24 @@ reg add "HKLM\SOFTWARE\Policies\Google\Chrome" /v ExtensionManifestV2Availabilit
 echo.
 echo Dang ep buoc tai va tu dong bat toan bo Extension trong danh sach...
 
-:: Thay the cac chuoi ID duoi day bang danh sach ma ID (32 ky tu) cac tien ich cua ban.
-:: Moi ID duoc cach nhau boi 1 khoang trang (dau cach).
-set "EXT_LIST=ghbmnnjooekpmoecnnnilnnbdlolhkhi lmjegmlicamnimmfhcmpkclmigmmcbeh mnjggcdmjocbbbhaepdhchncahnbgone lhobafahddgcelffkeicbaginigeejlf hnojoemndpdjofcdaonbefcfecpjfflh blpfhbolaobkkaalciociiglbefpglaf eimadpbcbfnmbkopoojfekhnkhdbieeh lmilalhkkdhfieeienjbiicclobibjao oifijhaokejakekmnjmphonojcfkpbbh jnofiabkigekemighcdaejlpgdhmbaog micdllihgoppmejpecmkilggmaagfdmb ddkjiahejlhfcafbddmgiahcphecmpfh"
+set "EXT_LIST="
+
+echo Allow CORS: Access-Control-Allow-Origin & set "EXT_LIST=!EXT_LIST! lhobafahddgcelffkeicbaginigeejlf"
+echo Allow CSP: Content-Security-Policy & set "EXT_LIST=!EXT_LIST! hnojoemndpdjofcdaonbefcfecpjfflh"
+echo Application Launcher For Drive (by Google) & set "EXT_LIST=!EXT_LIST! lmjegmlicamnimmfhcmpkclmigmmcbeh"
+echo Copy link text & set "EXT_LIST=!EXT_LIST! blpfhbolaobkkaalciociiglbefpglaf"
+echo Dark Reader & set "EXT_LIST=!EXT_LIST! eimadpbcbfnmbkopoojfekhnkhdbieeh"
+echo Google Docs Offline & set "EXT_LIST=!EXT_LIST! ghbmnnjooekpmoecnnnilnnbdlolhkhi"
+echo HttpWatch: HTTP Debugger & set "EXT_LIST=!EXT_LIST! dajhhgiioackgdldomhppobgjbinhimh"
+echo IDM Integration Module & set "EXT_LIST=!EXT_LIST! ngpampappnmepgilojfohadhhmbhlaek"
+echo Open Multiple URLs & set "EXT_LIST=!EXT_LIST! oifijhaokejakekmnjmphonojcfkpbbh"
+echo Run Javascript & set "EXT_LIST=!EXT_LIST! lmilalhkkdhfieeienjbiicclobibjao"
+echo Simple Auto HD (Open Source) & set "EXT_LIST=!EXT_LIST! jnofiabkigekemighcdaejlpgdhmbaog"
+echo SponsorBlock for YouTube - Skip Sponsorships & set "EXT_LIST=!EXT_LIST! mnjggcdmjocbbbhaepdhchncahnbgone"
+echo Tab Copy & set "EXT_LIST=!EXT_LIST! micdllihgoppmejpecmkilggmaagfdmb"
+echo TimeTags for YouTube & set "EXT_LIST=!EXT_LIST! hpbmedimnlknflpbgfbllklgelbnelef"
+echo uBlock Origin Lite & set "EXT_LIST=!EXT_LIST! ddkjiahejlhfcafbddmgiahcphecmpfh"
+
 
 set /a count=1
 for %%i in (%EXT_LIST%) do (
@@ -29,6 +45,7 @@ for %%i in (%EXT_LIST%) do (
 
 echo.
 echo ========================================================================
-echo HOAN TAT CAU HINH EXTENSIONS. Vui long khoi dong lai Google Chrome.
+echo HOAN TAT CAU HINH EXTENSIONS. Vui long khoi dong lai Google Chrome. (exit sau 5 giay)
 echo ========================================================================
-pause
+@REM sẽ thoát chương trình sau 5 giây
+timeout /t 5 >nul
